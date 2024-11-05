@@ -1,0 +1,62 @@
+.login-container {
+    display: flex; /* Alinha o formulário ao centro */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Altura total da tela */
+    background-color: #f0f4f8; /* Cor de fundo */
+}
+
+.login-form {
+    background-color: #fff; /* Cor de fundo do formulário */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.06); /* Sombra suave */
+    width: 300px; /* Largura fixa */
+}
+
+h2 {
+    text-align: center; /* Centraliza o título */
+    color: #333; /* Cor do texto do título */
+}
+
+.input-container {
+    margin-bottom: 15px;
+    margin-right: 20px; /* Espaçamento entre os campos */
+}
+
+label {
+    display: block; /* Faz a label ocupar toda a linha */
+    margin-bottom: 5px; /* Espaçamento abaixo da label */
+    color: #555; /* Cor da label */
+    font-size: 14px; /* Tamanho da fonte da label */
+}
+
+input {
+    width: 100%; /* Largura total do campo */
+    padding: 12px 10px; /* Espaçamento interno */
+    border: 1px solid #ccc; /* Borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho do texto */
+    transition: border-color 0.2s; /* Efeito de transição na borda */
+}
+
+input:focus {
+    border-color: #007bff; /* Cor da borda quando o campo é focado */
+    outline: none; /* Remove o contorno padrão */
+}
+
+button {
+    width: 100%; /* Largura total do botão */
+    padding: 12px; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 4px; /* Bordas arredondadas */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: white; /* Cor do texto do botão */
+    font-size: 16px; /* Tamanho do texto do botão */
+    cursor: pointer; /* Muda o cursor ao passar o mouse */
+    transition: background-color 0.2s; /* Efeito de transição na cor de fundo */
+}
+
+button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+}

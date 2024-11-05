@@ -1,0 +1,31 @@
+create database permissoes;
+
+use permissoes;
+
+create table empresa(
+id integer not null auto_increment,
+nome varchar(150) not null,
+primary key (id));
+
+create table colaborador (
+id integer not null auto_increment,
+nome varchar(100) not null,
+ocupacao varchar(100),
+empresa_id integer,
+primary key(id),
+FOREIGN KEY (empresa_id) REFERENCES empresa(id)
+);
+
+insert into empresa values(1, 'FTeck');
+insert into colaborador values(1, 'Fábio', 'Desenvolvedor', 1);
+
+create table users(
+id integer not null auto_increment,
+usuario varchar(100) not null,
+senha varchar(100) not null,
+primary key(id)
+);
+
+insert into users values(1, '001', '001');
+
+select * from users;

@@ -1,0 +1,74 @@
+.main-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.caicas-pesquisa {
+    display: flex; /* Alinha os campos lado a lado */
+    gap: 20px; /* Espaçamento entre os campos de entrada */
+}
+
+.input-container {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.text-label {
+    font-size: 20px;
+}
+
+
+label {
+    display: block; /* Faz a label ser um bloco */
+    margin-bottom: 8px; /* Espaçamento abaixo da label */
+    color: #333; /* Cor da label */
+    font-size: 14px; /* Tamanho da fonte da label */
+}
+
+input {
+    width: 100%;
+    padding: 12px 10px; /* Espaçamento interno */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    transition: 0.2s ease all; /* Animação suave para o foco */
+    font-size: 16px; /* Tamanho do texto do input */
+}
+
+input:focus {
+    border-color: #007bff; /* Cor da borda quando focado */
+    outline: none; /* Remove o contorno padrão */
+}
+
+/* Estilização da tabela */
+.table-container {
+    margin-top: 20px; /* Espaçamento entre a pesquisa e a tabela */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Remove o espaço entre as células */
+    margin-top: 10px;
+}
+
+thead {
+    background-color: #0056b3; /* Fundo do cabeçalho da tabela (azul mais escuro) */
+    color: white; /* Cor do texto do cabeçalho */
+}
+
+th, td {
+    padding: 12px; /* Espaçamento interno */
+    text-align: left; /* Alinha o texto à esquerda */
+    border-bottom: 1px solid #ddd; /* Borda abaixo das células */
+}
+
+tbody tr:hover {
+    background-color: #e6f0ff; /* Cor de fundo ao passar o mouse */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f7ff; /* Cor de fundo para linhas pares (azul claro) */
+}
