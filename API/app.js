@@ -45,7 +45,47 @@ app.get('/api/login', (req, res) => {
   );
 });
 
+// 2º Endpoint: Busca todos os dados de colaborador com o nome da empresa
 // 2º Endpoint: Busca todos os dados da tabela colaborador
+app.get('/api/colaboradores-completo', (req, res) => {
+  const { empresa, colaborador } = req.query;
+  
+  let query = 'SELECT c.id, c.nome, c.ocupacao, e.nome AS empresa ' +
+              'FROM colaborador c ' +
+              'JOIN empresa e ON c.empresa_id = e.id ';
+
+  let queryParams = [];
+
+  if (colaborador) {
+    query += 'WHERE c.nome LIKE ? ';
+    queryParams.push(`%${colaborador}%`);
+  }
+
+  if (empresa) {
+    if (queryParams.length > 0) {
+      query += 'AND e.nome LIKE ?';
+    } else {
+      query += 'WHERE e.nome LIKE ?';
+    }
+    queryParams.push(`%${empresa}%`);
+  }
+
+  // Adicionando a ordenação por ID
+  query += 'ORDER BY c.id'; // Ordena pela coluna 'id'
+
+  db.query(query, queryParams, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao buscar colaboradores.' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
+
+// 3º Endpoint: Busca todos os dados da tabela colaborador
 app.get('/api/colaboradores', (req, res) => {
   db.query('SELECT * FROM colaborador', (err, results) => {
     if (err) {

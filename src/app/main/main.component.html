@@ -2,11 +2,11 @@
     <div class="caicas-pesquisa">
         <div class="input-container">
             <label for="empresa" class="text-label">Nome da empresa:</label>
-            <input type="text" id="empresa" [(ngModel)]="empresa" name="empresa" required placeholder=" " />
+            <input type="text" id="empresa" [(ngModel)]="empresa" name="empresa" required placeholder=" " (ngModelChange)="pesquisar()"/>
         </div>
         <div class="input-container">
             <label for="colaborador" class="text-label">Pesquisar por colaborador:</label>
-            <input type="text" name="colaborador" id="colaborador" [(ngModel)]="colaborador" required placeholder=" " />
+            <input type="text" name="colaborador" id="colaborador" [(ngModel)]="colaborador" required placeholder=" " (ngModelChange)="pesquisar()"/>
         </div>
     </div>
     <div class="table-container">

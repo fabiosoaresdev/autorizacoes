@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgModel } from '@angular/forms';
+import { MainService } from '../services/main.service';
 
 interface Colaborador{
   id: number,
@@ -20,7 +21,23 @@ export class MainComponent {
   colaboradores: Colaborador[] = []
   empresa:string = ''
   colaborador:string = ''
-  
 
-  pesquisar(){}
+  ngOnInit(): void {
+    this.pesquisar();
+  }
+
+  constructor(private mainService: MainService) {}
+
+  pesquisar() {
+    this.mainService.getColaboradores(this.empresa, this.colaborador).subscribe(
+      (data) => {
+        this.colaboradores = data; // Atualiza a lista de colaboradores na tabela
+      },
+      (error) => {
+        console.error('Erro ao buscar colaboradores', error);
+      }
+    );
+  }
+  
+ 
 }
