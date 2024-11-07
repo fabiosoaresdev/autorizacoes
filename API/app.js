@@ -1,7 +1,13 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');
 const app = express();
 const port = 3000;
+
+app.use(cors({
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Conexão com o banco de dados MySQL
 const db = mysql.createConnection({
@@ -10,6 +16,7 @@ const db = mysql.createConnection({
   password: 'fteck*',  // Substitua pelo seu password do MySQL
   database: 'permissoes'
 });
+
 
 db.connect(err => {
   if (err) {
@@ -23,7 +30,7 @@ db.connect(err => {
 app.use(express.json());
 
 // 1º Endpoint: Busca usuário e senha no banco de dados e retorna
-app.get('/api/users', (req, res) => {
+app.get('/api/login', (req, res) => {
   const { usuario, senha } = req.query;
   db.query(
     'SELECT * FROM users WHERE usuario = ? AND senha = ?',
@@ -108,3 +115,4 @@ app.post('/api/users', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`);
 });
+

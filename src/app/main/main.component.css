@@ -72,3 +72,80 @@ tbody tr:hover {
 tbody tr:nth-child(even) {
     background-color: #f2f7ff; /* Cor de fundo para linhas pares (azul claro) */
 }
+
+/* Estilos principais já fornecidos */
+
+/* Estilos responsivos com Media Query */
+@media (max-width: 768px) {
+    .main-container {
+        margin: 10px;  /* Reduz a margem */
+        padding: 10px; /* Reduz o padding */
+    }
+
+    .caicas-pesquisa {
+        flex-direction: column; /* Coloca os campos de pesquisa um abaixo do outro */
+        gap: 10px; /* Menor espaçamento entre os campos */
+    }
+
+    .input-container {
+        margin-right: 0; /* Remove a margem à direita */
+        width: 100%; /* Garante que os campos usem toda a largura disponível */
+    }
+
+    .text-label {
+        font-size: 16px; /* Ajusta o tamanho da fonte */
+    }
+
+    label {
+        font-size: 12px; /* Ajusta o tamanho da fonte da label */
+    }
+
+    input {
+        font-size: 14px; /* Ajusta o tamanho da fonte do input */
+        padding: 10px;  /* Ajusta o padding para telas menores */
+    }
+
+    .table-container {
+        margin-top: 15px;  /* Ajusta a margem superior */
+    }
+
+    table {
+        font-size: 14px; /* Ajusta o tamanho da fonte na tabela */
+    }
+
+    th, td {
+        padding: 8px; /* Menor padding nas células */
+    }
+}
+
+@media (max-width: 480px) {
+    .main-container {
+        margin: 5px;  /* Ajusta a margem para telas pequenas */
+        padding: 5px; /* Ajusta o padding para telas pequenas */
+    }
+
+    .caicas-pesquisa {
+        gap: 5px; /* Reduz o espaço entre os campos */
+    }
+
+    .input-container {
+        width: 100%; /* Faz os campos ocuparem toda a largura */
+    }
+
+    .text-label {
+        font-size: 14px; /* Tamanho da fonte para telas muito pequenas */
+    }
+
+    input {
+        font-size: 12px; /* Tamanho do texto do input */
+        padding: 8px;  /* Ajusta o padding para telas muito pequenas */
+    }
+
+    table {
+        font-size: 12px; /* Ajusta o tamanho da fonte para a tabela */
+    }
+
+    th, td {
+        padding: 6px; /* Reduz o padding nas células */
+    }
+}

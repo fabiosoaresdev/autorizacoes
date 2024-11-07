@@ -1,23 +1,34 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+import { HttpClientModule } from '@angular/common/http'; // Importe HttpClientModule aqui
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],  // Adicione o HttpClientModule aqui
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  email:string = ''
-  password:string = ''
+  email: string = '';
+  password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  onSubmit() {
-    console.log('Email:', this.email)
-    console.log('Senha:', this.password)
-    this.router.navigate(['/home']);
+  onLogin() {
+    this.authService.login(this.email, this.password).subscribe({
+      next: (response) => {
+        if (response && response.length > 0) {
+          this.router.navigate(['/home']);
+        } else {
+          console.error('Usuário ou senha incorretos, tente novamente.');
+        }
+      },
+      error: (error) => {
+        console.error('Erro de conexão com o servidor');
+      }
+    });
   }
 }
