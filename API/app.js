@@ -1,8 +1,11 @@
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
+const jwt = require('jsonwebtoken');
 const app = express();
 const port = 3000;
+
+const secretKey = 'fkdz#29'; 
 
 app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
@@ -15,6 +18,7 @@ const db = mysql.createConnection({
   user: 'root',
   password: 'fteck*',  // Substitua pelo seu password do MySQL
   database: 'permissoes'
+  
 });
 
 
@@ -30,20 +34,61 @@ db.connect(err => {
 app.use(express.json());
 
 // 1º Endpoint: Busca usuário e senha no banco de dados e retorna
+// 1º Endpoint: Login (Gera o token JWT)
 app.get('/api/login', (req, res) => {
   const { usuario, senha } = req.query;
+  
   db.query(
     'SELECT * FROM users WHERE usuario = ? AND senha = ?',
     [usuario, senha],
     (err, results) => {
       if (err) {
-        res.status(500).json({ error: 'Erro ao buscar usuário e senha.' });
-      } else {
-        res.json(results);
+        return res.status(500).json({ error: 'Erro ao buscar usuário e senha.' });
       }
+
+      if (results.length === 0) {
+        return res.status(401).json({ message: 'Usuário ou senha incorretos' });
+      }
+
+      // Usuário encontrado, gerando o token JWT
+      const user = results[0];
+
+      // Payload do token (informações do usuário)
+      const payload = {
+        id: user.id,
+        usuario: user.usuario
+      };
+
+      // Geração do token com uma expiração de 1 hora
+      const token = jwt.sign(payload, secretKey, { expiresIn: '1h' });
+
+      // Envia o token na resposta
+      res.json({ token });
     }
   );
 });
+
+// Middleware para verificar se o token JWT é válido
+function verifyToken(req, res, next) {
+  const token = req.headers['authorization'];
+
+  if (!token) {
+    return res.status(403).json({ message: 'Token não fornecido.' });
+  }
+
+  // Remove o "Bearer " do início do token
+  const tokenWithoutBearer = token.replace('Bearer ', '');
+
+  jwt.verify(tokenWithoutBearer, secretKey, (err, decoded) => {
+    if (err) {
+      return res.status(403).json({ message: 'Token inválido.' });
+    }
+
+    // Armazenar informações decodificadas do token (pode ser útil)
+    req.user = decoded;
+    next();
+  });
+}
 
 // 2º Endpoint: Busca todos os dados de colaborador com o nome da empresa
 app.get('/api/colaboradores-completo', (req, res) => {

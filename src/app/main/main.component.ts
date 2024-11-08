@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { MainService } from './main.service';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+
 
 interface Colaborador{
   id: number,
@@ -15,7 +15,7 @@ interface Colaborador{
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
@@ -24,11 +24,14 @@ export class MainComponent {
   empresa:string = ''
   colaborador:string = ''
 
+
   ngOnInit(): void {
     this.pesquisar();
   }
   
   constructor(private mainService: MainService, private router: Router) {}
+
+  isAuthenticatedFlag = true
 
   pesquisar() {
     this.mainService.getColaboradores(this.empresa, this.colaborador).subscribe(
