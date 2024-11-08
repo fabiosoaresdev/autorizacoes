@@ -43,9 +43,11 @@ input:focus {
     outline: none; /* Remove o contorno padrão */
 }
 
-/* Estilização da tabela */
+/* Estilização da tabela com rolagem */
 .table-container {
     margin-top: 20px; /* Espaçamento entre a pesquisa e a tabela */
+    max-height: 400px; /* Define a altura máxima da tabela */
+    overflow-y: auto; /* Permite rolagem vertical quando necessário */
 }
 
 table {
@@ -148,4 +150,32 @@ tbody tr:nth-child(even) {
     th, td {
         padding: 6px; /* Reduz o padding nas células */
     }
+}
+
+
+/* Estilização dos botões fixos na parte inferior */
+.cadastro-buttons {
+    position: fixed; /* Fixa os botões na tela */
+    bottom: 20px; /* Distância da parte inferior da tela */
+    left: 50%; /* Move os botões para o centro horizontal */
+    transform: translateX(-50%); /* Ajusta para centralizar exato */
+    display: flex;
+    gap: 20px; /* Espaçamento entre os botões */
+    justify-content: center;
+    z-index: 10; /* Garante que os botões fiquem acima do conteúdo */
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
 }

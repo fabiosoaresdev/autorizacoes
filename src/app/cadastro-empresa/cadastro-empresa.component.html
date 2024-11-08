@@ -1,0 +1,17 @@
+<div class="cadastro-container">
+    <h2>Cadastrar Nova Empresa</h2>
+    
+    <form (ngSubmit)="cadastrar()">
+      <div class="input-container">
+        <label for="nome" class="text-label">Nome da Empresa:</label>
+        <input type="text" id="nome" [(ngModel)]="empresa.nome" name="nome" required />
+      </div>
+  
+      <!-- Botão de salvar -->
+      <button type="submit" class="btn">Salvar</button>
+    </form>
+  
+    <!-- Botão para voltar ao menu -->
+    <button class="btn" (click)="voltarAoMenu()">Voltar à Tela Inicial</button>
+  </div>
+  

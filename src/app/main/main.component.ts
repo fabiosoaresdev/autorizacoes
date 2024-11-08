@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
-import { MainService } from '../services/main.service';
+import { MainService } from './main.service';
+import { Router } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 interface Colaborador{
   id: number,
@@ -13,7 +15,7 @@ interface Colaborador{
 @Component({
   selector: 'app-main',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, HttpClientModule],
   templateUrl: './main.component.html',
   styleUrl: './main.component.css'
 })
@@ -25,19 +27,24 @@ export class MainComponent {
   ngOnInit(): void {
     this.pesquisar();
   }
-
-  constructor(private mainService: MainService) {}
+  
+  constructor(private mainService: MainService, private router: Router) {}
 
   pesquisar() {
     this.mainService.getColaboradores(this.empresa, this.colaborador).subscribe(
       (data) => {
-        this.colaboradores = data; // Atualiza a lista de colaboradores na tabela
+        this.colaboradores = data; 
       },
       (error) => {
         console.error('Erro ao buscar colaboradores', error);
       }
     );
   }
-  
- 
-}
+
+  navegarParaCadastroEmpresa(){
+    this.router.navigate(['/cadastro-empresa'])
+  }
+  navegarParaCadastroColaborador() {
+    this.router.navigate(['/cadastro-colaborador']);
+  }
+}  

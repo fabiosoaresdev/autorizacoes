@@ -1,0 +1,60 @@
+<div class="cadastro-container">
+  <h2>Cadastrar Novo Colaborador</h2>
+
+  <form (ngSubmit)="cadastrar()">
+    <div class="input-container">
+      <label for="nome" class="text-label">Nome</label>
+      <input
+        type="text"
+        name="nome"
+        id="nome"
+        [(ngModel)]="colaborador.nome"
+        required
+      />
+    </div>
+
+    <div class="input-container">
+      <label for="ocupacao" class="text-label">Ocupação</label>
+      <input
+        type="text"
+        name="ocupacao"
+        id="ocupacao"
+        [(ngModel)]="colaborador.ocupacao"
+      />
+    </div>
+
+    <div class="input-container">
+      <label for="empresa" class="text-label">Empresa</label>
+      <input
+        type="text"
+        name="empresa"
+        id="empresa"
+        [(ngModel)]="colaborador.empresa"
+        (input)="buscarEmpresas()"
+        placeholder="Digite o nome da empresa"
+      />
+
+      <!-- Tabela de empresas sugeridas -->
+      <div *ngIf="empresas.length > 0" class="empresas-sugestao">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome da Empresa</th>
+              <th>Selecionar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let empresa of empresas" (click)="selecionarEmpresa(empresa)">
+              <td>{{ empresa.nome }}</td>
+              <td><button type="button">Selecionar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <button type="submit" class="btn">Salvar</button>
+  </form>
+
+  <button class="btn" (click)="voltarAoMenu()">Voltar a tela inicial</button>
+</div>

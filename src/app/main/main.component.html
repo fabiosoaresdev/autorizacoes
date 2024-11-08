@@ -9,6 +9,7 @@
             <input type="text" name="colaborador" id="colaborador" [(ngModel)]="colaborador" required placeholder=" " (ngModelChange)="pesquisar()"/>
         </div>
     </div>
+
     <div class="table-container">
         <table>
             <thead>
@@ -29,4 +30,10 @@
             </tbody>
         </table>
     </div>
+</div>
+
+<!-- Botões fixos na parte inferior da tela -->
+<div class="cadastro-buttons">
+    <button class="btn" (click)="navegarParaCadastroEmpresa()">Cadastrar Empresa</button>
+    <button class="btn" (click)="navegarParaCadastroColaborador()">Cadastrar Colaborador</button>
 </div>

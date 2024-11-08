@@ -6,7 +6,7 @@ import { appConfig } from './app/app.config';
 bootstrapApplication(AppComponent, {
   providers: [
     ...appConfig.providers,
-    provideHttpClient(withFetch()) 
+    provideHttpClient()
   ]
 })
   .catch((err) => console.error(err));

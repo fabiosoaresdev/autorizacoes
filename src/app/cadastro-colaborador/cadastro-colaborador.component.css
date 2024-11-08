@@ -1,0 +1,108 @@
+.cadastro-container {
+    padding: 20px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-container {
+    margin-bottom: 15px;
+  }
+  
+  .text-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  input, select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3;
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #d32f2f;
+  }
+
+  /* Ajustando o tamanho do card e a tabela */
+.empresas-sugestao {
+    margin-top: 10px;
+    max-height: 200px; /* Define uma altura máxima para o card */
+    overflow-y: auto; /* Adiciona rolagem caso o conteúdo seja maior */
+    border: 1px solid #ddd;
+    border-radius: 5px; /* Deixa as bordas arredondadas */
+    padding: 10px;
+    width: 100%; /* Tamanho total em relação ao campo de entrada */
+    background-color: #f9f9f9;
+  }
+  
+  .empresas-sugestao table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .empresas-sugestao th, .empresas-sugestao td {
+    padding: 6px 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px; /* Reduz o tamanho da fonte */
+  }
+  
+  .empresas-sugestao tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  

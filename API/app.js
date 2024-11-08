@@ -46,7 +46,6 @@ app.get('/api/login', (req, res) => {
 });
 
 // 2º Endpoint: Busca todos os dados de colaborador com o nome da empresa
-// 2º Endpoint: Busca todos os dados da tabela colaborador
 app.get('/api/colaboradores-completo', (req, res) => {
   const { empresa, colaborador } = req.query;
   
@@ -82,32 +81,7 @@ app.get('/api/colaboradores-completo', (req, res) => {
   });
 });
 
-
-
-
-// 3º Endpoint: Busca todos os dados da tabela colaborador
-app.get('/api/colaboradores', (req, res) => {
-  db.query('SELECT * FROM colaborador', (err, results) => {
-    if (err) {
-      res.status(500).json({ error: 'Erro ao buscar colaboradores.' });
-    } else {
-      res.json(results);
-    }
-  });
-});
-
-// 3º Endpoint: Busca todos os dados da tabela empresa
-app.get('/api/empresas', (req, res) => {
-  db.query('SELECT * FROM empresa', (err, results) => {
-    if (err) {
-      res.status(500).json({ error: 'Erro ao buscar empresas.' });
-    } else {
-      res.json(results);
-    }
-  });
-});
-
-// 4º Endpoint: Cadastra nova empresa
+// 3º Endpoint: Cadastra nova empresa
 app.post('/api/empresas', (req, res) => {
   const { nome } = req.body;
   db.query('INSERT INTO empresa (nome) VALUES (?)', [nome], (err, result) => {
@@ -119,7 +93,7 @@ app.post('/api/empresas', (req, res) => {
   });
 });
 
-// 5º Endpoint: Cadastra novo colaborador
+// 4º Endpoint: Cadastra novo colaborador
 app.post('/api/colaboradores', (req, res) => {
   const { nome, ocupacao, empresa_id } = req.body;
   db.query(
@@ -134,6 +108,74 @@ app.post('/api/colaboradores', (req, res) => {
     }
   );
 });
+
+// 5º Endpoint: Busca todos os dados da tabela empresa
+app.post('/api/colaboradores', (req, res) => {
+  const { nome, ocupacao, empresa_id } = req.body.colaborador;
+
+  // Verificar se a empresa existe
+  db.query('SELECT * FROM empresa WHERE id = ?', [empresa_id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao verificar empresa.' });
+    }
+
+    if (result.length === 0) {
+      return res.status(404).json({ error: 'Empresa não encontrada.' });
+    }
+
+    // Se a empresa existir, continuar com a inserção do colaborador
+    db.query('INSERT INTO colaborador (nome, ocupacao, empresa_id) VALUES (?, ?, ?)', [nome, ocupacao, empresa_id], (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: 'Erro ao cadastrar colaborador.' });
+      }
+
+      res.json({ message: 'Colaborador cadastrado com sucesso!', id: result.insertId });
+    });
+  });
+});
+
+// 7º Endpoint: Busca empresas pelo nome
+app.get('/api/empresas', (req, res) => {
+  const { nome } = req.query;
+
+  let query = 'SELECT * FROM empresa';
+  let queryParams = [];
+
+  if (nome) {
+    query += ' WHERE nome LIKE ?';
+    queryParams.push(`%${nome}%`);
+  }
+
+  db.query(query, queryParams, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao buscar empresas.' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
+
+
+
+// 3º Endpoint: Busca todos os dados da tabela colaborador
+app.get('/api/colaboradores', (req, res) => {
+  db.query('SELECT * FROM colaborador', (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao buscar colaboradores.' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+
+
+
+
+
 
 // 6º Endpoint: Cadastra novo usuário
 app.post('/api/users', (req, res) => {
