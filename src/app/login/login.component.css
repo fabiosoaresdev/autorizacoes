@@ -1,62 +1,77 @@
 .login-container {
-    display: flex; /* Alinha o formulário ao centro */
-    justify-content: center; /* Centraliza horizontalmente */
-    align-items: center; /* Centraliza verticalmente */
-    height: 100vh; /* Altura total da tela */
-    background-color: #f0f4f8; /* Cor de fundo */
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100vh; 
+    background-image: url(../../assets/images/background-Login.avif);
+    background-size: cover;
+    background-position: center;  
+    background-repeat: no-repeat
 }
 
 .login-form {
-    background-color: #fff; /* Cor de fundo do formulário */
-    padding: 20px; /* Espaçamento interno */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.06); /* Sombra suave */
-    width: 300px; /* Largura fixa */
+    background-color: var(--background-com-opacidade);
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 6);
+    width: 300px;
+    border-radius: 20px;
+    
 }
 
-h2 {
-    text-align: center; /* Centraliza o título */
-    color: #333; /* Cor do texto do título */
+.topo-formulario {
+    align-items: center;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .input-container {
     margin-bottom: 15px;
-    margin-right: 20px; /* Espaçamento entre os campos */
+    margin-right: 20px;
+    border-radius: 5px;
 }
 
 label {
-    display: block; /* Faz a label ocupar toda a linha */
-    margin-bottom: 5px; /* Espaçamento abaixo da label */
-    color: #555; /* Cor da label */
-    font-size: 14px; /* Tamanho da fonte da label */
+    display: block; 
+    margin-bottom: 5px; 
+    color: var(--label-color); 
+    font-size: 14px; 
 }
 
 input {
-    width: 100%; /* Largura total do campo */
-    padding: 12px 10px; /* Espaçamento interno */
-    border: 1px solid #ccc; /* Borda padrão */
-    border-radius: 4px; /* Bordas arredondadas */
-    font-size: 16px; /* Tamanho do texto */
-    transition: border-color 0.2s; /* Efeito de transição na borda */
+    width: 100%;
+    padding: 12px 10px; 
+    border: 1.5px solid; 
+    border-color: var(--black);
+    border-radius: 10px; 
+    font-size: 16px; 
+    transition: border-color 0.3s; 
+
 }
 
 input:focus {
-    border-color: #007bff; /* Cor da borda quando o campo é focado */
-    outline: none; /* Remove o contorno padrão */
+    border: 2px solid;
+    border-color: var(--primary-color); 
+    outline: none; 
+    transition: border-color 0.3s;
 }
 
 button {
-    width: 100%; /* Largura total do botão */
-    padding: 12px; /* Espaçamento interno */
-    border: none; /* Remove a borda padrão */
-    border-radius: 4px; /* Bordas arredondadas */
-    background-color: #007bff; /* Cor de fundo do botão */
-    color: white; /* Cor do texto do botão */
-    font-size: 16px; /* Tamanho do texto do botão */
-    cursor: pointer; /* Muda o cursor ao passar o mouse */
-    transition: background-color 0.2s; /* Efeito de transição na cor de fundo */
+    width: 100%; 
+    padding: 12px; 
+    border: none; 
+    border-radius: 5px; 
+    background: rgb(34,104,179);
+    color: white; 
+    font-size: 20px; 
+    cursor: pointer;
+    
+    background: linear-gradient(90deg, rgba(34,104,179,1) 0%, rgba(0,51,105,1) 64%);
 }
 
 button:hover {
-    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+    background: rgb(27,86,149);
+    background: linear-gradient(90deg, rgba(27,86,149,1) 0%, rgba(0,38,78,1) 64%); 
 }
+

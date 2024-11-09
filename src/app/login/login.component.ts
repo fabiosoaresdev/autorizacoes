@@ -16,6 +16,18 @@ export class LoginComponent {
 
   constructor(private router: Router, private LoginService: LoginService) {}
 
+  moverFoco() {
+    setTimeout(() => {
+      const passwordField = document.getElementById('password') as HTMLInputElement;
+      if (passwordField) {
+        passwordField.focus();
+        console.log('Foco movido para a senha');
+      } else {
+        console.log('Campo de senha não encontrado');
+      }
+    }, 0); // Usa 0 para garantir que o foco aconteça depois que o evento foi processado
+  }
+
   onLogin() {
     this.LoginService.login(this.email, this.password).subscribe({
       next: (response) => {
