@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LoginService {
-  private apiUrl = "http://177.223.178.227:3000";
+  private apiUrl = "http://192.168.0.153:3000";
   private isAuthenticatedFlag = false;
   private isBrowser = typeof window !== 'undefined';  // Verificação se está no navegador
 
@@ -53,7 +53,7 @@ export class LoginService {
   
   getProtectedData() {
     const headers = this.getAuthHeaders();
-    return this.http.get('http://177.223.178.227:3000/api/protected', { headers });
+    return this.http.get('http://192.168.0.153:3000/api/protected', { headers });
   }
   
 }

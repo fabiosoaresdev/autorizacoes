@@ -7,6 +7,10 @@
             <label for="colaborador" class="text-label">Pesquisar por colaborador:</label>
             <input type="text" name="colaborador" id="colaborador" [(ngModel)]="colaborador" required placeholder=" " (ngModelChange)="pesquisar()"/>
         </div>
+        <div class="botoes-cadastro">
+            <button class="btn" (click)="navegarParaCadastroEmpresa()">Cadastrar Empresa</button>
+            <button class="btn" (click)="navegarParaCadastroColaborador()">Cadastrar Colaborador</button>
+        </div>
 
     <div class="table-container">
         <table>
@@ -28,8 +32,4 @@
             </tbody>
         </table>
     </div>
-</div>
-<div class="cadastro-buttons">
-    <button class="btn" (click)="navegarParaCadastroEmpresa()">Cadastrar Empresa</button>
-    <button class="btn" (click)="navegarParaCadastroColaborador()">Cadastrar Colaborador</button>
 </div>
