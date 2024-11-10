@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class MainService {
 
-  private apiUrl = "http://192.168.0.153:3000"
+  private apiUrl = "http://177.223.178.227:3000"
   constructor(private http: HttpClient) {}
 
   getColaboradores(empresa: string, colaborador: string): Observable<any> {

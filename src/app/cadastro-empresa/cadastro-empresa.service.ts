@@ -9,7 +9,7 @@ export class CadastroEmpresaService {
 
   constructor(private http: HttpClient) {}
 
-  private apiUrl = "http://192.168.0.153:3000"
+  private apiUrl = "http://177.223.178.227:3000"
 
   cadastrarEmpresa(nome:string): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/api/empresas`, {nome})
