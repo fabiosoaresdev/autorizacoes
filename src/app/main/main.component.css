@@ -47,6 +47,9 @@ button {
     color: #fff;
 }
 
+.btn:hover{
+    background-color: var(--secondary-color)
+}
 .table-container {
     background-color: var(--primary-color);
     border-radius: 10px;

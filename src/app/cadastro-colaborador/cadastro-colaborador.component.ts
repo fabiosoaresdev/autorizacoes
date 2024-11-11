@@ -58,21 +58,37 @@ export class CadastroColaboradorComponent {
   }
 
   buscarEmpresas() {
-    console.log('Input alterado para:', this.colaborador.empresa); // Verificar se a função está sendo chamada
+    console.log('Input alterado para:', this.colaborador.empresa);
     if (this.colaborador.empresa.trim()) {
       this.cadastroColaborador.getEmpresas(this.colaborador.empresa).subscribe(
         (data) => {
-          console.log('Empresas retornadas:', data); // Verificar o retorno da API
-          this.empresas = data; // Preenche a lista de empresas
+          console.log('Empresas retornadas:', data);
+          this.empresas = data;
+  
+          // Verifica se há uma empresa com nome exato correspondente
+          const empresaCorrespondente = this.empresas.find(
+            (empresa) => empresa.nome.toLowerCase() === this.colaborador.empresa.trim().toLowerCase()
+          );
+  
+          if (empresaCorrespondente) {
+            // Preenche automaticamente o ID e limpa as sugestões
+            this.colaborador.empresa_id = empresaCorrespondente.id;
+            this.empresas = [];
+          } else {
+            // Limpa o ID se não houver correspondência exata
+            this.colaborador.empresa_id = null;
+          }
         },
         (error) => {
           console.error('Erro ao buscar empresas', error);
         }
       );
     } else {
-      this.empresas = []; // Limpa a lista de empresas se o campo estiver vazio
+      this.empresas = [];
+      this.colaborador.empresa_id = null;
     }
   }
+  
   
   
 

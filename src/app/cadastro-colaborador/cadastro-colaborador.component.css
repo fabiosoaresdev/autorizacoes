@@ -1,11 +1,13 @@
 .cadastro-container {
-    padding: 20px;
-    max-width: 500px;
-    margin: 0 auto;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
+  margin-top: 50px !important;
+  padding: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: #f9f9f9;
+  border-radius: 30px 0px 30px 0px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
   
   h2 {
     text-align: center;
@@ -32,13 +34,13 @@
   
   input:focus, select:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: var(--primary-color);
   }
   
   .btn {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     color: white;
     border: none;
     border-radius: 4px;
@@ -46,7 +48,7 @@
   }
   
   .btn:hover {
-    background-color: #0056b3;
+    background-color: var(--secondary-color);
   }
   
   button {
@@ -63,15 +65,17 @@
     background-color: #d32f2f;
   }
 
-  /* Ajustando o tamanho do card e a tabela */
+
 .empresas-sugestao {
     margin-top: 10px;
-    max-height: 200px; /* Define uma altura máxima para o card */
-    overflow-y: auto; /* Adiciona rolagem caso o conteúdo seja maior */
+    max-height: 90%;
+    overflow-y: auto;
     border: 1px solid #ddd;
-    border-radius: 5px; /* Deixa as bordas arredondadas */
+    border-radius: 5px; 
     padding: 10px;
-    width: 100%; /* Tamanho total em relação ao campo de entrada */
+    width: 95%;
+    text-align: center;
+    align-items: center;
     background-color: #f9f9f9;
   }
   
@@ -83,26 +87,33 @@
   .empresas-sugestao th, .empresas-sugestao td {
     padding: 6px 8px;
     text-align: left;
-    border: 1px solid #ddd;
-    font-size: 14px; /* Reduz o tamanho da fonte */
+    border: 1px solid;
+    border: none;
+    font-size: 14px; 
   }
   
-  .empresas-sugestao tr:hover {
+  .empresas-sugestao tr:hover{
     background-color: #e0e0e0;
   }
   
   button {
-    background-color: #4CAF50;
+    background-color: var(--button-select);
     color: white;
     border: none;
     padding: 4px 8px;
     cursor: pointer;
-    font-size: 12px;
-    border-radius: 4px;
+    font-size: 14px;
+    border-radius: 5px;
   }
   
-  button:hover {
-    background-color: #45a049;
+  .empresas-sugestao button:hover {
+    background-color: var(--button-select-hover);
   }
   
-  
+
+@media (max-width: 768px) {
+  .cadastro-container {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
+}
