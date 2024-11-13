@@ -21,18 +21,26 @@ interface Colaborador{
 })
 export class MainComponent {
   colaboradores: Colaborador[] = []
+  colaboradorSelecionado: any
   empresa:string = ''
   colaborador:string = ''
+  isAuthenticatedFlag = true
 
+  constructor(private mainService: MainService, private router: Router) {}
 
   ngOnInit(): void {
     this.pesquisar();
   }
+
+  selecionarColaborador(colaborador: Colaborador) {
+    if (this.colaboradorSelecionado === colaborador) {
+      this.colaboradorSelecionado = null;
+    } else {
+      this.colaboradorSelecionado = colaborador;
+    }
+    console.log('Colaborador selecionado:', this.colaboradorSelecionado);
+  }
   
-  constructor(private mainService: MainService, private router: Router) {}
-
-  isAuthenticatedFlag = true
-
   pesquisar() {
     this.mainService.getColaboradores(this.empresa, this.colaborador).subscribe(
       (data) => {
@@ -49,5 +57,14 @@ export class MainComponent {
   }
   navegarParaCadastroColaborador() {
     this.router.navigate(['/cadastro-colaborador']);
+  }
+
+  navegarParaEditarColaborador() {
+    if (this.colaboradorSelecionado) {
+      // Navega para a página de edição passando o ID
+      this.router.navigate(['/edicao-colaborador', this.colaboradorSelecionado.id]);
+    } else {
+      alert('Selecione um colaborador para editar!');
+    }
   }
 }  

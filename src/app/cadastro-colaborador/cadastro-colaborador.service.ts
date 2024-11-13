@@ -17,10 +17,7 @@ export class CadastroColaboradorService {
 
   constructor(private http: HttpClient) {}
 
-  // Método para cadastrar o colaborador
-  cadastrarColaborador(colaborador: { nome: string; ocupacao: string; empresa_id: number }): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/api/colaboradores`, colaborador);
-  }
+
 
   // Método para buscar empresas
   getEmpresas(nome: string): Observable<Empresa[]> {
@@ -33,8 +30,28 @@ export class CadastroColaboradorService {
     return this.http.get<Empresa[]>(`${this.apiUrl}/api/empresas`, { params }).pipe(
       catchError((err) => {
         console.error('Erro ao buscar empresas:', err);
-        return of([]); // Retorna uma lista vazia em caso de erro
+        return of([]); 
       })
     );
   }
+
+  cadastrarColaborador(colaborador: { nome: string; ocupacao: string; empresa_id: number }): Observable<any> {
+        return this.http.post<any>(`${this.apiUrl}/api/colaboradores`, colaborador);
+    }
+
+  getColaboradorById(id: string) {
+    return this.http.get<any>(`${this.apiUrl}/api/colaboradores/${id}`);
+  }
+
+  editarColaborador(id: string, colaboradorData: any) {
+    return this.http.put(`${this.apiUrl}/api/colaboradores/${id}`, colaboradorData);
+  }
+
+  deletarColaborador(id: number) {
+    return this.http.delete(`${this.apiUrl}/api/deletarColaborador/${id}`);
+  }
+  
+  
+    
+  
 }

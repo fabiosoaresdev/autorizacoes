@@ -35,7 +35,7 @@
       />
 
       <!-- Tabela de empresas sugeridas -->
-      <div *ngIf="empresas.length > 0" class="empresas-sugestao">
+      <div *ngIf="mostrarEmpresasSugeridas && empresas.length > 0" class="empresas-sugestao">
         <table>
           <thead>
             <tr>
@@ -57,4 +57,15 @@
   </form>
 
   <button class="btn" (click)="voltarAoMenu()">Voltar a tela inicial</button>
+</div>
+
+<button class="btn-delete" (click)="validacaoDeExclusao()">Excluir Registro</button>
+
+
+<div *ngIf="mostrarModalExclusao" class="modal">
+  <div class="modal-content">
+    <h2>Deseja realmente apagar o registro? Essa ação é irreversível.</h2>
+    <button class="btn" (click)="deletarRegistroColaborador()">Sim</button>
+    <button class="btn" (click)="cancelarExclusao()">Não</button>
+  </div>
 </div>

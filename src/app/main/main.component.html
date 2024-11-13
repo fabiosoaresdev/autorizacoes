@@ -10,8 +10,8 @@
         <div class="botoes-cadastro">
             <button class="btn" (click)="navegarParaCadastroEmpresa()">Cadastrar Empresa</button>
             <button class="btn" (click)="navegarParaCadastroColaborador()">Cadastrar Colaborador</button>
+            <button class="btn" (click)="navegarParaEditarColaborador()">Editar Colaborador</button>
         </div>
-
     <div class="table-container">
         <table>
             <thead>
@@ -23,7 +23,9 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let colaborador of colaboradores">
+                <tr *ngFor="let colaborador of colaboradores"
+                (click)="selecionarColaborador(colaborador)"
+                [class.selected]="colaborador === colaboradorSelecionado">
                     <td>{{colaborador.id}}</td>
                     <td>{{colaborador.empresa}}</td>
                     <td>{{colaborador.nome}}</td>
@@ -33,3 +35,5 @@
         </table>
     </div>
 </div>
+
+

@@ -16,7 +16,7 @@ app.use(cors({
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'fteck*',  // Substitua pelo seu password do MySQL
+  password: 'fteck*', 
   database: 'permissoes'
   
 });
@@ -33,7 +33,6 @@ db.connect(err => {
 // Middleware para analisar JSON
 app.use(express.json());
 
-// 1º Endpoint: Busca usuário e senha no banco de dados e retorna
 // 1º Endpoint: Login (Gera o token JWT)
 app.get('/api/login', (req, res) => {
   const { usuario, senha } = req.query;
@@ -67,8 +66,6 @@ app.get('/api/login', (req, res) => {
     }
   );
 });
-
-// Middleware para verificar se o token JWT é válido
 function verifyToken(req, res, next) {
   const token = req.headers['authorization'];
 
@@ -154,6 +151,42 @@ app.post('/api/colaboradores', (req, res) => {
   );
 });
 
+// 5º Edita o cadastro do colaborador
+app.put('/api/colaboradores/:id', (req, res) => {
+  const { id } = req.params;  // O ID do colaborador é passado como parâmetro
+  const { nome, ocupacao, empresa_id } = req.body;  // Dados do colaborador a serem atualizados
+
+  db.query(
+    'UPDATE colaborador SET nome = ?, ocupacao = ?, empresa_id = ? WHERE id = ?',
+    [nome, ocupacao, empresa_id, id],
+    (err, result) => {
+      if (err) {
+        res.status(500).json({ error: 'Erro ao atualizar colaborador.' });
+      } else if (result.affectedRows === 0) {
+        res.status(404).json({ error: 'Colaborador não encontrado.' });
+      } else {
+        res.json({ message: 'Colaborador atualizado com sucesso!' });
+      }
+    }
+  );
+});
+
+// 6º Endpoint: Deleta colaborador por ID
+app.delete('/api/deletarColaborador/:id', (req, res) => {
+  const { id } = req.params; // Obtém o ID da URL
+  db.query('DELETE FROM colaborador WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      return res.status(500).json({ error: 'Erro ao excluir colaborador.' });
+    }
+
+    if (result.affectedRows === 0) {
+      return res.status(404).json({ error: 'Colaborador não encontrado.' });
+    }
+
+    res.json({ message: 'Colaborador excluído com sucesso!' });
+  });
+});
+
 // 5º Endpoint: Busca todos os dados da tabela empresa
 app.post('/api/colaboradores', (req, res) => {
   const { nome, ocupacao, empresa_id } = req.body.colaborador;
@@ -201,8 +234,20 @@ app.get('/api/empresas', (req, res) => {
 });
 
 
-
-
+// 4º Endpoint: Busca colaborador por ID
+app.get('/api/colaboradores/:id', (req, res) => {
+  const { id } = req.params;
+  db.query('SELECT * FROM colaborador WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: 'Erro ao buscar colaborador.' });
+    } else {
+      if (result.length === 0) {
+        return res.status(404).json({ error: 'Colaborador não encontrado.' });
+      }
+      res.json(result[0]);  // Retorna o colaborador encontrado
+    }
+  });
+});
 
 
 // 3º Endpoint: Busca todos os dados da tabela colaborador

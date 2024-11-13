@@ -1,4 +1,4 @@
-.main-container{
+.main-container {
     margin: 10px;
 }
 
@@ -47,9 +47,10 @@ button {
     color: #fff;
 }
 
-.btn:hover{
-    background-color: var(--secondary-color)
+.btn:hover {
+    background-color: var(--secondary-color);
 }
+
 .table-container {
     background-color: var(--primary-color);
     border-radius: 10px;
@@ -77,10 +78,10 @@ thead {
 
 tbody {
     display: block;
-    max-height: 333px; 
-    overflow-y: auto; 
+    max-height: 333px;
+    overflow-y: auto;
     background-color: var(--background);
-    width: 100%; 
+    width: 100%;
 }
 
 th, td {
@@ -90,12 +91,23 @@ th, td {
     box-sizing: border-box;
 }
 
-tr.selected {
-    background-color: #007BFF;  /* Cor de fundo ao selecionar a linha */
-    color: #fff;  /* Cor do texto quando selecionado */
+tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    transition: background-color 0.3s ease;
 }
 
-/* Definindo as larguras das colunas */
+tr.selected {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+tbody tr:hover:not(.selected) {
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+
 th:nth-child(1), td:nth-child(1) {
     width: 10%;
 }
@@ -112,67 +124,61 @@ th:nth-child(4), td:nth-child(4) {
     width: 30%;
 }
 
-tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed; 
-}
-
 @media (max-width: 768px) {
     .main-container {
-        margin: 10px;  
-        padding: 10px; 
+        margin: 10px;
+        padding: 10px;
     }
 
     .text-label {
-        font-size: 16px; 
+        font-size: 16px;
     }
 
     label {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     input {
         font-size: 14px;
-        padding: 10px;  
+        padding: 10px;
     }
 
     .table-container {
-        margin-top: 15px;   
+        margin-top: 15px;
     }
 
     table {
-        font-size: 14px;  
+        font-size: 14px;
     }
 
     th, td {
-        padding: 8px; 
+        padding: 8px;
     }
 
     .botoes-cadastro {
-        display: flex; 
-        justify-content: center; 
-        gap: 10px; 
+        display: flex;
+        justify-content: center;
+        gap: 10px;
     }
 }
 
 @media (max-width: 480px) {
     .main-container {
-        margin: 5px;  
-        padding: 5px;  
+        margin: 5px;
+        padding: 5px;
     }
 
     .text-label {
-        font-size: 14px; 
+        font-size: 14px;
     }
 
     input {
-        font-size: 12px; 
-        padding: 8px;  
+        font-size: 12px;
+        padding: 8px;
     }
 
     table {
-        font-size: 12px; 
+        font-size: 12px;
     }
 
     th, td {
