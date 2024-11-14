@@ -57,7 +57,7 @@
             <tbody>
               <tr *ngFor="let empresa of empresas" (click)="selecionarEmpresa(empresa)">
                 <td>{{ empresa.nome }}</td>
-                <td><button type="button">Selecionar</button></td>
+                <td><button type="button" class="btnSelecionar">Selecionar</button></td>
               </tr>
             </tbody>
           </table>
@@ -71,9 +71,11 @@
   <!-- Modal exclusão de registro -->
   <div *ngIf="mostrarModalExclusao" class="modal">
     <div class="modal-content">
-      <h2>Deseja realmente apagar o registro? Essa ação é irreversível.</h2>
-      <button class="btn" (click)="deletarRegistroColaborador()">Sim</button>
-      <button class="btn" (click)="cancelarExclusao()">Não</button>
+      <h4>Deseja realmente apagar o registro? Essa ação é irreversível.</h4>
+      <div class="botoesInferiores">
+        <button class="btnModalSim" (click)="deletarRegistroColaborador()">Sim</button>
+        <button class="btnModal" (click)="cancelarExclusao()">Não</button>
+      </div>
     </div>
   </div>
 </body>

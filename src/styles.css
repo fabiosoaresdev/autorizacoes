@@ -15,26 +15,27 @@
     --black: #000000; 
     --white: #ffffff;
     --red: #DC143C;
+    --red-hover: #dd0a35;
+    --green: #009200;
+    --green-hover: #007700;
 }
 
-/* Estilos para o alerta */
 .alert {
-    display: none; /* Inicialmente escondido */
-    position: fixed; /* Posicionamento fixo na tela */
-    top: 50%; /* Centro vertical */
-    left: 50%; /* Centro horizontal */
-    transform: translate(-50%, -50%); /* Ajuste para centralizar */
-    background-color: #ff2400; /* Cor de fundo (vermelho escarlate) */
-    color: #ffffff; /* Cor do texto */
-    padding: 20px; /* Espaçamento interno */
-    border-radius: 8px; /* Bordas arredondadas */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
-    z-index: 1000; /* Garantir que fique acima de outros elementos */
-    text-align: center; /* Centralizar texto */
-    animation: fadeinout 5s; /* Animação de aparição e desaparecimento */
+    display: none;
+    position: fixed; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    background-color: #ff2400; 
+    color: #ffffff; 
+    padding: 20px; 
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    text-align: center;
+    animation: fadeinout 5s; 
   }
   
-  /* Animação de fade in e fade out */
   @keyframes fadeinout {
     0% { opacity: 0; }
     10% { opacity: 1; }
@@ -69,6 +70,10 @@
     margin-right: 10px;
     border-radius: 10px;
     font-size: 16px;
+}
+
+.btnExcluir:hover {
+    background-color: var(--red-hover);
 }
 
 .btnComum {

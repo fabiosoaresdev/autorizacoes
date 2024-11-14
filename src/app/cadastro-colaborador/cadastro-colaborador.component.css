@@ -89,6 +89,19 @@
   .empresas-sugestao button:hover {
     background-color: var(--button-select-hover);
   }
+
+.btnSelecionar{
+  color: var(--white);
+  background-color: var(--green);
+  padding: 2px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btnSelecionar:hover {
+  background-color: var(--green-hover) !important;
+}
   
 
 @media (max-width: 768px) {
@@ -97,6 +110,7 @@
     margin-right: 30px;
   }
 }
+
 
 
 /* Modal de confirmação */
@@ -115,10 +129,47 @@
 .modal-content {
   background-color: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 15px;
   text-align: center;
 }
 
-button {
-  margin-top: 10px;
+.botoesInferiores {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
+
+.btnModal {
+  margin: 10px;
+  width: 40%;
+  padding: 10px;
+  color: var(--white);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+
+}
+
+.btnModalSim {
+  margin: 10px;
+  width: 40%;
+  padding: 10px;
+  color: var(--white);
+  background-color: var(--red);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btnModal:hover {
+  background-color: var(--secondary-color);
+}
+
+.btnModalSim:hover {
+  background-color: var(--red-hover);
+}
+
+
+
+
