@@ -23,6 +23,8 @@ export class CadastroColaboradorComponent implements OnInit {
   modoEdicao: boolean = false;
   mostrarEmpresasSugeridas: boolean = false;
   mostrarModalExclusao: boolean = false;
+  mostrarBotaoExcluir: boolean = false;
+  mostrarBotaoCadastroEmpresa: boolean = true;
   empresas: any[] = [];
 
   constructor(
@@ -37,6 +39,8 @@ export class CadastroColaboradorComponent implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     if (id) {
       this.modoEdicao = true;
+      this.mostrarBotaoExcluir = true;
+      this.mostrarBotaoCadastroEmpresa = false;
       this.loadColaborador(id); 
     }
   }
@@ -204,7 +208,6 @@ export class CadastroColaboradorComponent implements OnInit {
   }
 
   atualizarListaColaboradores() {
-    // Função fictícia para atualizar a lista de colaboradores após exclusão
     this.cadastroColaborador.getEmpresas('').subscribe(
       (data) => {
         console.log('Lista de colaboradores atualizada:', data);
@@ -213,5 +216,9 @@ export class CadastroColaboradorComponent implements OnInit {
         console.error('Erro ao atualizar lista de colaboradores:', error);
       }
     );
+  }
+
+  cadastrarEmpresa(){
+    this.router.navigate(['/cadastro-empresa'])
   }
 }

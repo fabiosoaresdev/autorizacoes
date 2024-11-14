@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+@import "@fortawesome/fontawesome-free/css/all.min.css";
 
 * {
     margin: 0;
@@ -7,15 +8,75 @@
     font-family: 'Nunito', sans-serif;
 }
 
-:root {
-    --primary-color: #0056b3;
-    --secondary-color: #05468b;
-    --background: #ffffff;
-    --background-com-opacidade: rgba(255, 255, 255, 0.6);
-    --label-color: #001325;
-    --black: #000000;
-    --button-select: #39c23e; 
-    --button-select-hover: #2da831;
+:root { --primary-color: #0056b3; 
+    --secondary-color: #05468b; 
+    --background: #ffffff; 
+    --background-com-opacidade: rgba(255, 255, 255, 0.6); --label-color: #001325; 
+    --black: #000000; 
+    --white: #ffffff;
+    --red: #DC143C;
 }
 
+/* Estilos para o alerta */
+.alert {
+    display: none; /* Inicialmente escondido */
+    position: fixed; /* Posicionamento fixo na tela */
+    top: 50%; /* Centro vertical */
+    left: 50%; /* Centro horizontal */
+    transform: translate(-50%, -50%); /* Ajuste para centralizar */
+    background-color: #ff2400; /* Cor de fundo (vermelho escarlate) */
+    color: #ffffff; /* Cor do texto */
+    padding: 20px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    z-index: 1000; /* Garantir que fique acima de outros elementos */
+    text-align: center; /* Centralizar texto */
+    animation: fadeinout 5s; /* Animação de aparição e desaparecimento */
+  }
+  
+  /* Animação de fade in e fade out */
+  @keyframes fadeinout {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
 
+.cabecalho {
+    color: var(--white);
+    background-color: rgb(39,118,201);
+    background: linear-gradient(90deg, rgba(39,118,201,1) 11%, rgba(0,36,74,1) 70%);
+    padding: 10px;
+    display: flex;
+}
+
+.btnVoltar {
+    padding: 10px;
+    color: var(--white);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 22px;
+}
+
+.btnExcluir {
+    padding: 10px;
+    color: var(--white);
+    background-color: var(--red);
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+    border-radius: 10px;
+    font-size: 16px;
+}
+
+.btnComum {
+    padding: 10px;
+    color: var(--black);
+    background-color: var(--white);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    font-size: 16px;
+}

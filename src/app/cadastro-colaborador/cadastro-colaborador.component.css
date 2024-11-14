@@ -1,3 +1,8 @@
+.right {
+  display: flex;
+  margin-left: auto;
+}
+
 .cadastro-container {
   margin-top: 50px !important;
   padding: 20px;
@@ -51,28 +56,6 @@
     background-color: var(--secondary-color);
   }
   
-  button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 20px;
-    background-color: #f44336;
-    color: white;
-    border: none;
-    border-radius: 4px;
-  }
-
-  .btn-delete {
-    position: static;
-    width: 50%;
-    padding: 10px;
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    margin: 10px 120px;
-  }
-  
 .empresas-sugestao {
     margin-top: 10px;
     max-height: 90%;
@@ -101,16 +84,6 @@
   
   .empresas-sugestao tr:hover{
     background-color: #e0e0e0;
-  }
-  
-  button {
-    background-color: var(--button-select);
-    color: white;
-    border: none;
-    padding: 4px 8px;
-    cursor: pointer;
-    font-size: 14px;
-    border-radius: 5px;
   }
   
   .empresas-sugestao button:hover {
